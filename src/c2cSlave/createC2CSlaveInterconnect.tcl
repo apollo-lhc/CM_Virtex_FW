@@ -1,11 +1,10 @@
-source ../bd/axi_slave_helpers.tcl
-source ../bd/build_AXI_interconnect.tcl
+source ../bd/axi_helpers.tcl
 source ../bd/Xilinx_AXI_slaves.tcl
 
 #create a block design called "c2cSlave"
 #directory and name must be the same
 set bd_design_name "c2cSlave"
-create_bd_design -dir ../bd ${bd_design_name}
+create_bd_design -dir ./ ${bd_design_name}
 
 set EXT_CLK clk50Mhz
 set EXT_RESET reset_n
@@ -26,13 +25,6 @@ set_property CONFIG.FREQ_HZ 50000000 [get_bd_ports ${EXT_CLK}]
 create_bd_port -dir I -type rst $EXT_RESET
 
 
-#================================================================================
-#  Add local AXI devices here
-#================================================================================
-[AXI_DEVICE_ADD MYREG0          M00 $AXI_MASTER_CLK $AXI_MASTER_RSTN 50000000 0x43c40000 4K]
-[AXI_DEVICE_ADD MYREG1          M01 $AXI_MASTER_CLK $AXI_MASTER_RSTN 50000000 0x43c41000 4K]
-[AXI_DEVICE_ADD KINTEX_SYS_MGMT M02 $AXI_MASTER_CLK $AXI_MASTER_RSTN 50000000 0x43c42000 4K]
-[AXI_DEVICE_ADD CM_K_INFO       M03 $AXI_MASTER_CLK $AXI_MASTER_RSTN 50000000 0x43c43000 4K]
 
 #================================================================================
 #  Create an AXI interconnect
@@ -88,10 +80,10 @@ endgroup
 startgroup
 create_bd_cell -type ip -vlnv xilinx.com:ip:aurora_64b66b:11.2 ${C2C_PHY}
 set_property CONFIG.C_INIT_CLK.VALUE_SRC PROPAGATED   [get_bd_cells ${C2C_PHY}]
-set_property CONFIG.CHANNEL_ENABLE       {X0Y0}       [get_bd_cells ${C2C_PHY}]
+#set_property CONFIG.CHANNEL_ENABLE       {X0Y0}       [get_bd_cells ${C2C_PHY}]
 set_property CONFIG.C_AURORA_LANES       {1}	      [get_bd_cells ${C2C_PHY}]
-set_property CONFIG.C_LINE_RATE          {5}	      [get_bd_cells ${C2C_PHY}]
 #set_property CONFIG.C_LINE_RATE          {10}	      [get_bd_cells ${C2C_PHY}]
+set_property CONFIG.C_LINE_RATE          {5}	      [get_bd_cells ${C2C_PHY}]
 set_property CONFIG.C_REFCLK_FREQUENCY   {200}	      [get_bd_cells ${C2C_PHY}]
 set_property CONFIG.C_GT_LOC_2           {X} 	      [get_bd_cells ${C2C_PHY}]
 set_property CONFIG.interface_mode       {Streaming}  [get_bd_cells ${C2C_PHY}]
@@ -148,7 +140,7 @@ set mRST [list $AXI_MASTER_RSTN $AXI_MASTER_RSTN]
     ### ibert testing
     set ibert_name ${C2C_PHY}_ibert
     create_bd_cell -type ip -vlnv xilinx.com:ip:in_system_ibert:1.0 ${ibert_name}
-    set_property -dict [list CONFIG.C_GTS_USED { X0Y0} CONFIG.C_ENABLE_INPUT_PORTS {false}] [get_bd_cells ${ibert_name}]
+#    set_property -dict [list CONFIG.C_GTS_USED { X0Y0 X0Y1} CONFIG.C_ENABLE_INPUT_PORTS {false}] [get_bd_cells ${ibert_name}]
     #modify ${C2C_PHY}
     set_property -dict [list CONFIG.drp_mode {Native}] [get_bd_cells ${C2C_PHY}]
     set_property -dict [list CONFIG.TransceiverControl {true}] [get_bd_cells ${C2C_PHY}]
@@ -167,30 +159,19 @@ set mRST [list $AXI_MASTER_RSTN $AXI_MASTER_RSTN]
 
 
 
-
-
-
-
-#global AXI_BUS_FREQ
-global AXI_BUS_FREQ
-set AXI_BUS_FREQ(myReg0) [get_property CONFIG.FREQ_HZ [get_bd_intf_pins /${C2C}/m_axi]]
-set AXI_BUS_FREQ(myReg1) [get_property CONFIG.FREQ_HZ [get_bd_intf_pins /${C2C}/m_axi]]
-
-
 #================================================================================
 #  Configure and add AXI slaves
 #================================================================================
 
+
 #expose the interconnect's axi master port for an axi slave
 puts "Adding user slaves"
-#AXI_PL_CONNECT creates all the PL slaves in the list passed to it.
-[AXI_IP_SYS_MGMT KINTEX_SYS_MGMT 0]
-[AXI_PL_CONNECT "MYREG0 MYREG1 CM_K_INFO"]
+[AXI_IP_SYS_MGMT VIRTEX_SYS_MGMT  ${AXI_INTERCONNECT_NAME} ${AXI_MASTER_CLK} ${AXI_MASTER_RSTN} 50000000 0x43D42000 4K 0]
+[AXI_IP_BRAM TEST_V_BRAM            ${AXI_INTERCONNECT_NAME} ${AXI_MASTER_CLK} ${AXI_MASTER_RSTN} 50000000 0x7AA10000 8K 0]
 
-#generate the DTSI files  for the axi slaves
-foreach name [array names AXI_DTSI_CALLS] {
-    eval $AXI_DTSI_CALLS($name)
-}
+[AXI_PL_DEV_CONNECT MYVREG0        ${AXI_INTERCONNECT_NAME} ${AXI_MASTER_CLK} ${AXI_MASTER_RSTN} 50000000 0x43D40000 4K]
+[AXI_PL_DEV_CONNECT MYVREG1        ${AXI_INTERCONNECT_NAME} ${AXI_MASTER_CLK} ${AXI_MASTER_RSTN} 50000000 0x43D41000 4K]
+[AXI_PL_DEV_CONNECT CM_V_INFO      ${AXI_INTERCONNECT_NAME} ${AXI_MASTER_CLK} ${AXI_MASTER_RSTN} 50000000 0x43D43000 4K]
 
 
 #========================================

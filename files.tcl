@@ -1,4 +1,4 @@
-set bd_path bd
+set bd_path proj
 
 set bd_name c2cSlave
 
@@ -14,7 +14,7 @@ set vhdl_files "\
      src/myReg/myReg.vhd \
      src/misc/RGB_PWM.vhd \
      src/misc/LED_PWM.vhd \
-     src/CM_K_info/CM_K_info.vhd \
+     src/FW_info/FW_info.vhd \
      "
 set xdc_files "\
     src/top_pins.xdc \

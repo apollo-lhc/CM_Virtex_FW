@@ -14,7 +14,7 @@ Library UNISIM;
 use UNISIM.vcomponents.all;
 
 
-entity CM_K_info is
+entity FW_info is
   
   port (
     clk_axi         : in  std_logic;
@@ -24,9 +24,9 @@ entity CM_K_info is
     writeMOSI       : in  AXIWriteMOSI;
     writeMISO       : out AXIWriteMISO := DefaultAXIWriteMISO
     );
-end entity CM_K_info;
+end entity FW_info;
 
-architecture behavioral of CM_K_info is
+architecture behavioral of FW_info is
   signal localAddress : slv_32_t;
   signal localRdData  : slv_32_t;
   signal localRdData_latch  : slv_32_t;

@@ -1,7 +1,6 @@
 
 #set the FPGA part number
-set FPGA_part xcku15p-ffva1760-2-e
-#xc7Z045FFG676I-2
+set FPGA_part xcvu7p-flvb2104-1-e
 
 set top top
 
