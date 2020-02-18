@@ -101,12 +101,15 @@ set_property PACKAGE_PIN  AP33 [get_ports  p_amc13_tts_out ]
 # 'input' "clk1" programmable source
 
 # Quad A (224)
-set_property PACKAGE_PIN  AW8  [get_ports  n_util_clk_chan0 ]
-set_property PACKAGE_PIN  AW9  [get_ports  p_util_clk_chan0 ]
+#set_property PACKAGE_PIN  AW8  [get_ports  n_util_clk_chan0 ]
+#set_property PACKAGE_PIN  AW9  [get_ports  p_util_clk_chan0 ]
+set_property PACKAGE_PIN  AT10 [get_ports  n_util_clk_chan0 ]
+set_property PACKAGE_PIN  AT11 [get_ports  p_util_clk_chan0 ]
+
 
 # Quad B (quad 225)
-set_property PACKAGE_PIN  AT10 [get_ports  n_clk0_chan0 ]
-set_property PACKAGE_PIN  AT11 [get_ports  p_clk0_chan0 ]
+#set_property PACKAGE_PIN  AT10 [get_ports  n_clk0_chan0 ]
+#set_property PACKAGE_PIN  AT11 [get_ports  p_clk0_chan0 ]
 set_property PACKAGE_PIN  AP10 [get_ports  n_clk1_chan0 ]
 set_property PACKAGE_PIN  AP11 [get_ports  p_clk1_chan0 ]
 
