@@ -25,6 +25,20 @@ entity top is
     v_fpga_i2c_scl   : inout std_logic;
     v_fpga_i2c_sda   : inout std_logic;
     
+    --TCDS
+    p_clk0_chan0     : in std_logic; -- 312.5 MHz system clock
+    n_clk0_chan0     : in std_logic;
+    p_clk1_chan0     : in std_logic; -- 312.195122 MHz synth clock
+    n_clk1_chan0     : in std_logic;
+    p_clk0_chan5     : in std_logic;
+    n_clk0_chan5     : in std_logic;
+    p_clk1_chan5     : in std_logic;
+    n_clk1_chan5     : in std_logic;
+    p_atca_tts_out   : out std_logic;
+    n_atca_tts_out   : out std_logic;
+    p_atca_ttc_in    : in  std_logic;
+    n_atca_ttc_in    : in  std_logic;
+                                                    
     -- tri-color LED
     led_red : out std_logic;
     led_green : out std_logic;
@@ -109,44 +123,46 @@ begin  -- architecture structure
       C2CLink_phy_refclk_clk_n => n_util_clk_chan0,
       C2CLink_phy_refclk_clk_p => p_util_clk_chan0,
       clk50Mhz                 => clk_50,
-      MYVREG0_araddr            => local_AXI_ReadMOSI(0).address,              
-      MYVREG0_arprot            => local_AXI_ReadMOSI(0).protection_type,      
-      MYVREG0_arready(0)        => local_AXI_ReadMISO(0).ready_for_address,    
-      MYVREG0_arvalid(0)        => local_AXI_ReadMOSI(0).address_valid,        
-      MYVREG0_awaddr            => local_AXI_WriteMOSI(0).address,             
-      MYVREG0_awprot            => local_AXI_WriteMOSI(0).protection_type,     
-      MYVREG0_awready(0)           => local_AXI_WriteMISO(0).ready_for_address,   
-      MYVREG0_awvalid(0)           => local_AXI_WriteMOSI(0).address_valid,       
-      MYVREG0_bready(0)            => local_AXI_WriteMOSI(0).ready_for_response,  
-      MYVREG0_bresp             => local_AXI_WriteMISO(0).response,            
-      MYVREG0_bvalid(0)            => local_AXI_WriteMISO(0).response_valid,      
-      MYVREG0_rdata             => local_AXI_ReadMISO(0).data,                 
-      MYVREG0_rready(0)            => local_AXI_ReadMOSI(0).ready_for_data,       
-      MYVREG0_rresp             => local_AXI_ReadMISO(0).response,             
-      MYVREG0_rvalid(0)            => local_AXI_ReadMISO(0).data_valid,           
-      MYVREG0_wdata             => local_AXI_WriteMOSI(0).data,                
-      MYVREG0_wready(0)            => local_AXI_WriteMISO(0).ready_for_data,       
-      MYVREG0_wstrb             => local_AXI_WriteMOSI(0).data_write_strobe,   
-      MYVREG0_wvalid(0)            => local_AXI_WriteMOSI(0).data_valid,          
-      MYVREG1_araddr            => local_AXI_ReadMOSI(1).address,              
-      MYVREG1_arprot            => local_AXI_ReadMOSI(1).protection_type,      
-      MYVREG1_arready(0)           => local_AXI_ReadMISO(1).ready_for_address,    
-      MYVREG1_arvalid(0)           => local_AXI_ReadMOSI(1).address_valid,        
-      MYVREG1_awaddr            => local_AXI_WriteMOSI(1).address,             
-      MYVREG1_awprot            => local_AXI_WriteMOSI(1).protection_type,     
-      MYVREG1_awready(0)           => local_AXI_WriteMISO(1).ready_for_address,   
-      MYVREG1_awvalid(0)           => local_AXI_WriteMOSI(1).address_valid,       
-      MYVREG1_bready(0)            => local_AXI_WriteMOSI(1).ready_for_response,  
-      MYVREG1_bresp             => local_AXI_WriteMISO(1).response,            
-      MYVREG1_bvalid(0)            => local_AXI_WriteMISO(1).response_valid,      
-      MYVREG1_rdata             => local_AXI_ReadMISO(1).data,                 
-      MYVREG1_rready(0)            => local_AXI_ReadMOSI(1).ready_for_data,       
-      MYVREG1_rresp             => local_AXI_ReadMISO(1).response,             
-      MYVREG1_rvalid(0)            => local_AXI_ReadMISO(1).data_valid,           
-      MYVREG1_wdata             => local_AXI_WriteMOSI(1).data,                
-      MYVREG1_wready(0)            => local_AXI_WriteMISO(1).ready_for_data,       
-      MYVREG1_wstrb             => local_AXI_WriteMOSI(1).data_write_strobe,   
-      MYVREG1_wvalid(0)            => local_AXI_WriteMOSI(1).data_valid,
+      VIRTEX_TCDS_DRP_araddr                     => local_AXI_ReadMOSI(0).address,
+      VIRTEX_TCDS_DRP_arprot                     => local_AXI_ReadMOSI(0).protection_type,
+      VIRTEX_TCDS_DRP_arready(0)                 => local_AXI_ReadMISO(0).ready_for_address,
+      VIRTEX_TCDS_DRP_arvalid(0)                 => local_AXI_ReadMOSI(0).address_valid,
+      VIRTEX_TCDS_DRP_awaddr                     => local_AXI_WriteMOSI(0).address,
+      VIRTEX_TCDS_DRP_awprot                     => local_AXI_WriteMOSI(0).protection_type,
+      VIRTEX_TCDS_DRP_awready(0)                 => local_AXI_WriteMISO(0).ready_for_address,
+      VIRTEX_TCDS_DRP_awvalid(0)                 => local_AXI_WriteMOSI(0).address_valid,
+      VIRTEX_TCDS_DRP_bready(0)                  => local_AXI_WriteMOSI(0).ready_for_response,
+      VIRTEX_TCDS_DRP_bresp                      => local_AXI_WriteMISO(0).response,
+      VIRTEX_TCDS_DRP_bvalid(0)                  => local_AXI_WriteMISO(0).response_valid,
+      VIRTEX_TCDS_DRP_rdata                      => local_AXI_ReadMISO(0).data,
+      VIRTEX_TCDS_DRP_rready(0)                  => local_AXI_ReadMOSI(0).ready_for_data,
+      VIRTEX_TCDS_DRP_rresp                      => local_AXI_ReadMISO(0).response,
+      VIRTEX_TCDS_DRP_rvalid(0)                  => local_AXI_ReadMISO(0).data_valid,
+      VIRTEX_TCDS_DRP_wdata                      => local_AXI_WriteMOSI(0).data,
+      VIRTEX_TCDS_DRP_wready(0)                  => local_AXI_WriteMISO(0).ready_for_data,
+      VIRTEX_TCDS_DRP_wstrb                      => local_AXI_WriteMOSI(0).data_write_strobe,
+      VIRTEX_TCDS_DRP_wvalid(0)                  => local_AXI_WriteMOSI(0).data_valid,
+
+      VIRTEX_TCDS_araddr                         => local_AXI_ReadMOSI(1).address,
+      VIRTEX_TCDS_arprot                         => local_AXI_ReadMOSI(1).protection_type,
+      VIRTEX_TCDS_arready(0)                     => local_AXI_ReadMISO(1).ready_for_address,
+      VIRTEX_TCDS_arvalid(0)                     => local_AXI_ReadMOSI(1).address_valid,
+      VIRTEX_TCDS_awaddr                         => local_AXI_WriteMOSI(1).address,
+      VIRTEX_TCDS_awprot                         => local_AXI_WriteMOSI(1).protection_type,
+      VIRTEX_TCDS_awready(0)                     => local_AXI_WriteMISO(1).ready_for_address,
+      VIRTEX_TCDS_awvalid(0)                     => local_AXI_WriteMOSI(1).address_valid,
+      VIRTEX_TCDS_bready(0)                      => local_AXI_WriteMOSI(1).ready_for_response,
+      VIRTEX_TCDS_bresp                          => local_AXI_WriteMISO(1).response,
+      VIRTEX_TCDS_bvalid(0)                      => local_AXI_WriteMISO(1).response_valid,
+      VIRTEX_TCDS_rdata                          => local_AXI_ReadMISO(1).data,
+      VIRTEX_TCDS_rready(0)                      => local_AXI_ReadMOSI(1).ready_for_data,
+      VIRTEX_TCDS_rresp                          => local_AXI_ReadMISO(1).response,
+      VIRTEX_TCDS_rvalid(0)                      => local_AXI_ReadMISO(1).data_valid,
+      VIRTEX_TCDS_wdata                          => local_AXI_WriteMOSI(1).data,
+      VIRTEX_TCDS_wready(0)                      => local_AXI_WriteMISO(1).ready_for_data,
+      VIRTEX_TCDS_wstrb                          => local_AXI_WriteMOSI(1).data_write_strobe,
+      VIRTEX_TCDS_wvalid(0)                      => local_AXI_WriteMOSI(1).data_valid,
+
       CM_V_INFO_araddr            => local_AXI_ReadMOSI(2).address,              
       CM_V_INFO_arprot            => local_AXI_ReadMOSI(2).protection_type,      
       CM_V_INFO_arready(0)           => local_AXI_ReadMISO(2).ready_for_address,    
@@ -203,25 +219,48 @@ begin  -- architecture structure
 
 );
 
-  myReg_1: entity work.myReg
-    port map (
-      clk_axi     => AXI_CLK,
-      reset_axi_n => AXI_RST_N,
-      readMOSI    => local_AXI_ReadMOSI(0),
-      readMISO    => local_AXI_ReadMISO(0),
-      writeMOSI   => local_AXI_WriteMOSI(0),
-      writeMISO   => local_AXI_WriteMISO(0),
-      test        => myreg1_test_vector);
-  myReg_2: entity work.myReg
-    port map (
-      clk_axi     => AXI_CLK,
-      reset_axi_n => AXI_RST_N,
-      readMOSI    => local_AXI_ReadMOSI(1),
-      readMISO    => local_AXI_ReadMISO(1),
-      writeMOSI   => local_AXI_WriteMOSI(1),
-      writeMISO   => local_AXI_WriteMISO(1),
-      test        => myreg2_test_vector);
+  --myReg_1: entity work.myReg
+  --  port map (
+  --    clk_axi     => AXI_CLK,
+  --    reset_axi_n => AXI_RST_N,
+  --    readMOSI    => local_AXI_ReadMOSI(0),
+  --    readMISO    => local_AXI_ReadMISO(0),
+  --    writeMOSI   => local_AXI_WriteMOSI(0),
+  --    writeMISO   => local_AXI_WriteMISO(0),
+  --    test        => myreg1_test_vector);
+  --myReg_2: entity work.myReg
+  --  port map (
+  --    clk_axi     => AXI_CLK,
+  --    reset_axi_n => AXI_RST_N,
+  --    readMOSI    => local_AXI_ReadMOSI(1),
+  --    readMISO    => local_AXI_ReadMISO(1),
+  --    writeMOSI   => local_AXI_WriteMOSI(1),
+  --    writeMISO   => local_AXI_WriteMISO(1),
+  --    test        => myreg2_test_vector);
 
+  TCDS_1: entity work.TCDS
+    port map (
+      clk_axi              => AXI_CLK,
+      clk_200              => clk_200,
+      reset_axi_n          => AXI_RST_N,
+      readMOSI             => local_AXI_readMOSI(1),
+      readMISO             => local_AXI_readMISO(1),
+      writeMOSI            => local_AXI_writeMOSI(1),
+      writeMISO            => local_AXI_writeMISO(1),
+      DRP_readMOSI         => local_AXI_readMOSI(0),
+      DRP_readMISO         => local_AXI_readMISO(0),
+      DRP_writeMOSI        => local_AXI_writeMOSI(0),
+      DRP_writeMISO        => local_AXI_writeMISO(0),
+      refclk0_p => p_clk0_chan0,
+      refclk0_n => n_clk0_chan0,
+      refclk1_p => p_clk1_chan0,
+      refclk1_n => n_clk1_chan0,
+      tx_p     => p_atca_tts_out  ,
+      tx_n     => n_atca_tts_out  ,
+      rx_p     => p_atca_ttc_in   ,
+      rx_n     => n_atca_ttc_in   ,
+      TxRx_clk_sel => '1');
+  
   CM_V_info_1: entity work.FW_info
     port map (
       clk_axi     => AXI_CLK,
