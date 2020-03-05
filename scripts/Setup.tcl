@@ -67,6 +67,12 @@ for {set j 0} {$j < [llength $vhdl_files ] } {incr j} {
     puts "Adding $filename"
 }
 
+for {set j 0} {$j < [llength $verilog_files ] } {incr j} {
+    set filename "../[lindex $verilog_files $j]"
+    read_verilog $filename
+    puts "Adding $filename"
+}
+
 #Add xdc files
 for {set j 0} {$j < [llength $xdc_files ] } {incr j} {
     set filename "../[lindex $xdc_files $j]"
