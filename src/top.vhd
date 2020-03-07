@@ -259,7 +259,7 @@ begin  -- architecture structure
       tx_n     => n_atca_tts_out  ,
       rx_p     => p_atca_ttc_in   ,
       rx_n     => n_atca_ttc_in   ,
-      TxRx_clk_sel => '1');
+      TxRx_clk_sel => '0');
   
   CM_V_info_1: entity work.FW_info
     port map (

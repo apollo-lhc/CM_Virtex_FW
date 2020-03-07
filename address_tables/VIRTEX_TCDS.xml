@@ -6,6 +6,11 @@
     <node id="RX_CDR_STABLE"    address="0x000" mask="0x00000200" permission="r"/>
     <node id="POWER_GOOD"    address="0x000" mask="0x00000002" permission="r"/>
     <node id="COUNTS_TXOUTCLK"    address="0x001" permission="r"/>
+    <node id="COUNTS_REFCLK0"     address="0x002" permission="r"/>
+    <node id="QPLL0_LOCK"    address="0x003" mask="0x00000001" permission="r"/>
+    <node id="QPLL0_FBCLKLOST"    address="0x003" mask="0x00000002" permission="r"/>
+    <node id="QPLL0_REFCLKLOST"    address="0x003" mask="0x00000004" permission="r"/>
+
   </node>
   <node id="RESETS"             address="0x005">    
     <node id="RESET_ALL"         address="0x000" mask="0x00000001" permission="rw"/>

@@ -38,6 +38,8 @@ architecture behavioral of TCDS is
   signal reset : std_logic;
   signal refclk : std_logic;
   signal refclk0 : std_logic;
+  signal refclk0_ODIV2 : std_logic;
+  signal refclk0_ODIV2_int : std_logic;
   signal refclk1 : std_logic;
   signal qpll0outclk : std_logic;
   signal qpll0refclk : std_logic;
@@ -106,7 +108,7 @@ begin  -- architecture TCDS
       IB    => refclk0_n,
       CEB   => '0',
       O     => refclk0,  
-      ODIV2 => open);
+      ODIV2 => refclk0_ODIV2);
 
   reflk1_buf : IBUFDS_GTE4
     generic map (
@@ -141,6 +143,17 @@ begin  -- architecture TCDS
       DIV     => "000",
       I       => clk_rx_int_raw,
       O       => clk_rx_int);
+
+  refclk0_buf : BUFG_GT
+    port map (
+      CE      => '1',
+      CEMASK  => '0',
+      CLR     => '0',
+      CLRMASK => '0',
+      DIV     => "000",
+      I       => refclk0_ODIV2,
+      O       => refclk0_ODIV2_int);
+  
 
 
   TCDS_interface_1: entity work.Virtex_TCDS_interface
@@ -214,6 +227,11 @@ begin  -- architecture TCDS
       qpll0outclk_out(0)                 => qpll0outclk,
 --      qpll0refclk_in(0)                  => qpll0refclk,
       qpll0outrefclk_out(0)              => qpll0refclk,
+      qpll0locken_in(0)                  => '1',
+      qpll0lock_out(0)                   => Mon.CLOCKING.QPLL0_LOCK,
+      qpll0lockdetclk_in(0)              => clk_200,
+      qpll0fbclklost_out(0)              => Mon.CLOCKING.QPLL0_FBCLKLOST,
+      qpll0refclklost_out(0)             => Mon.CLOCKING.QPLL0_REFCLKLOST,
       drpaddr_in                         => drpaddr_int,--drp_intf.addr,
       drpclk_in(0)                       => drpclk,--clk_axi,
       drpdi_in                           => drpdi_int,--drp_intf.di,
@@ -261,7 +279,15 @@ begin  -- architecture TCDS
       count       => Mon.CLOCKING.COUNTS_TXOUTCLK
       );
   
+   count_refclk0: entity work.counter_clock
+     port map (
+       clk0        => clk_200,
+       clk1        => refclk0_ODIV2_int,
+       reset_sync  => reset,
+       count       => Mon.CLOCKING.COUNTS_REFCLK0
+       );
 
+  
   --AXI_DRP_1: entity work.AXI_DRP
   --  port map (
   --    AXI_aclk      => clk_axi,

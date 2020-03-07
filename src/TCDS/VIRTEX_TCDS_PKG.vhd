@@ -6,8 +6,12 @@ use IEEE.std_logic_1164.all;
 
 package VIRTEX_TCDS_CTRL is
   type VIRTEX_TCDS_CLOCKING_MON_t is record
+    COUNTS_REFCLK0             : std_logic_vector(31 downto  0);
     COUNTS_TXOUTCLK            : std_logic_vector(31 downto  0);
     POWER_GOOD                 : std_logic;                     
+    QPLL0_FBCLKLOST            : std_logic;                     
+    QPLL0_LOCK                 : std_logic;                     
+    QPLL0_REFCLKLOST           : std_logic;                     
     RX_CDR_STABLE              : std_logic;                     
   end record VIRTEX_TCDS_CLOCKING_MON_t;
 
