@@ -67,6 +67,14 @@ for {set j 0} {$j < [llength $vhdl_files ] } {incr j} {
     puts "Adding $filename"
 }
 
+#Add verilog files
+for {set j 0} {$j < [llength $verilog_files ] } {incr j} {
+    set filename "../[lindex $verilog_files $j]"
+    read_verilog -sv $filename
+    puts "Adding $filename"
+}
+
+
 #Add xdc files
 for {set j 0} {$j < [llength $xdc_files ] } {incr j} {
     set filename "../[lindex $xdc_files $j]"
@@ -80,6 +88,14 @@ for {set j 0} {$j < [llength $xci_files ] } {incr j} {
     read_ip $filename
     puts "Adding $filename"
 }
+
+#Add data files
+for {set j 0} {$j < [llength $data_files ] } {incr j} {
+    set filename "../[lindex $data_files $j]"
+    add_files $filename
+    puts "Adding $filename"
+}
+
 
 #################################################################################
 # STEP#1: build

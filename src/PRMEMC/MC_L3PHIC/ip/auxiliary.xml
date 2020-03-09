@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="MatchCalculatorTop" xd:componentRef="MatchCalculatorTop" xd:initiationInterval="119" xd:clockPeriod="4.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="bx" xd:originalName="bx" xd:direction="in" xd:interfaceRef="bx_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="3"/>
+  <xd:arg xd:name="match1-&gt;nentries_[0]" xd:originalName="match1" xd:direction="in" xd:interfaceRef="match1_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match1-&gt;nentries_[1]" xd:originalName="match1" xd:direction="in" xd:interfaceRef="match1_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match2-&gt;nentries_[0]" xd:originalName="match2" xd:direction="in" xd:interfaceRef="match2_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match2-&gt;nentries_[1]" xd:originalName="match2" xd:direction="in" xd:interfaceRef="match2_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match3-&gt;nentries_[0]" xd:originalName="match3" xd:direction="in" xd:interfaceRef="match3_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match3-&gt;nentries_[1]" xd:originalName="match3" xd:direction="in" xd:interfaceRef="match3_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match4-&gt;nentries_[0]" xd:originalName="match4" xd:direction="in" xd:interfaceRef="match4_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match4-&gt;nentries_[1]" xd:originalName="match4" xd:direction="in" xd:interfaceRef="match4_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match5-&gt;nentries_[0]" xd:originalName="match5" xd:direction="in" xd:interfaceRef="match5_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match5-&gt;nentries_[1]" xd:originalName="match5" xd:direction="in" xd:interfaceRef="match5_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match6-&gt;nentries_[0]" xd:originalName="match6" xd:direction="in" xd:interfaceRef="match6_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match6-&gt;nentries_[1]" xd:originalName="match6" xd:direction="in" xd:interfaceRef="match6_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match7-&gt;nentries_[0]" xd:originalName="match7" xd:direction="in" xd:interfaceRef="match7_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match7-&gt;nentries_[1]" xd:originalName="match7" xd:direction="in" xd:interfaceRef="match7_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match8-&gt;nentries_[0]" xd:originalName="match8" xd:direction="in" xd:interfaceRef="match8_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="match8-&gt;nentries_[1]" xd:originalName="match8" xd:direction="in" xd:interfaceRef="match8_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="8"/>
+  <xd:arg xd:name="bx_o" xd:originalName="bx_o" xd:direction="out" xd:interfaceRef="bx_o_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="3" xd:firstOut="2"/>
+  <xd:arg xd:name="fullmatch1-&gt;nentries_[0]" xd:originalName="fullmatch1" xd:direction="out" xd:interfaceRef="fullmatch1_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch1-&gt;nentries_[1]" xd:originalName="fullmatch1" xd:direction="out" xd:interfaceRef="fullmatch1_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch2-&gt;nentries_[0]" xd:originalName="fullmatch2" xd:direction="out" xd:interfaceRef="fullmatch2_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch2-&gt;nentries_[1]" xd:originalName="fullmatch2" xd:direction="out" xd:interfaceRef="fullmatch2_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch3-&gt;nentries_[0]" xd:originalName="fullmatch3" xd:direction="out" xd:interfaceRef="fullmatch3_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch3-&gt;nentries_[1]" xd:originalName="fullmatch3" xd:direction="out" xd:interfaceRef="fullmatch3_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch4-&gt;nentries_[0]" xd:originalName="fullmatch4" xd:direction="out" xd:interfaceRef="fullmatch4_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch4-&gt;nentries_[1]" xd:originalName="fullmatch4" xd:direction="out" xd:interfaceRef="fullmatch4_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch5-&gt;nentries_[0]" xd:originalName="fullmatch5" xd:direction="out" xd:interfaceRef="fullmatch5_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch5-&gt;nentries_[1]" xd:originalName="fullmatch5" xd:direction="out" xd:interfaceRef="fullmatch5_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch6-&gt;nentries_[0]" xd:originalName="fullmatch6" xd:direction="out" xd:interfaceRef="fullmatch6_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch6-&gt;nentries_[1]" xd:originalName="fullmatch6" xd:direction="out" xd:interfaceRef="fullmatch6_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch7-&gt;nentries_[0]" xd:originalName="fullmatch7" xd:direction="out" xd:interfaceRef="fullmatch7_nentries_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="fullmatch7-&gt;nentries_[1]" xd:originalName="fullmatch7" xd:direction="out" xd:interfaceRef="fullmatch7_nentries_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="8" xd:firstOut="8"/>
+  <xd:arg xd:name="match1_dataarray_data_V_q0" xd:originalName="match1_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match1_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match2_dataarray_data_V_q0" xd:originalName="match2_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match2_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match3_dataarray_data_V_q0" xd:originalName="match3_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match3_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match4_dataarray_data_V_q0" xd:originalName="match4_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match4_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match5_dataarray_data_V_q0" xd:originalName="match5_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match5_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match6_dataarray_data_V_q0" xd:originalName="match6_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match6_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match7_dataarray_data_V_q0" xd:originalName="match7_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match7_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="match8_dataarray_data_V_q0" xd:originalName="match8_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="match8_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="14"/>
+  <xd:arg xd:name="allstub_dataarray_data_V_q0" xd:originalName="allstub_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="allstub_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="36"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[0]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_0_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[1]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_1_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[2]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_2_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[3]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_3_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[4]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_4_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[5]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_5_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[6]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_6_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allstub-&gt;nentries_[7]" xd:originalName="allstub" xd:direction="in" xd:interfaceRef="allstub_nentries_7_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj_dataarray_data_V_q0" xd:originalName="allproj_dataarray_data_V_q0" xd:direction="in" xd:interfaceRef="allproj_dataarray_data_V_q0" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="60"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[0]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_0_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[1]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_1_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[2]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_2_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[3]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_3_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[4]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_4_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[5]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_5_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[6]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_6_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="allproj-&gt;nentries_[7]" xd:originalName="allproj" xd:direction="in" xd:interfaceRef="allproj_nentries_7_V" xd:busTypeRef="ap_memory" xd:arraySize="1024" xd:dataWidth="8"/>
+  <xd:arg xd:name="fullmatch1_dataarray_data_V_d0" xd:originalName="fullmatch1_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch1_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:arg xd:name="fullmatch2_dataarray_data_V_d0" xd:originalName="fullmatch2_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch2_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:arg xd:name="fullmatch3_dataarray_data_V_d0" xd:originalName="fullmatch3_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch3_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:arg xd:name="fullmatch4_dataarray_data_V_d0" xd:originalName="fullmatch4_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch4_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:arg xd:name="fullmatch5_dataarray_data_V_d0" xd:originalName="fullmatch5_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch5_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:arg xd:name="fullmatch6_dataarray_data_V_d0" xd:originalName="fullmatch6_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch6_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:arg xd:name="fullmatch7_dataarray_data_V_d0" xd:originalName="fullmatch7_dataarray_data_V_d0" xd:direction="out" xd:interfaceRef="fullmatch7_dataarray_data_V_d0" xd:busTypeRef="ap_memory" xd:arraySize="256" xd:dataWidth="45"/>
+  <xd:latencyEstimates xd:best-case="118" xd:worst-case="118" xd:average-case="118"/>
+  <xd:resourceEstimates xd:LUT="6266" xd:FF="1704" xd:BRAM="0" xd:DSP="1"/>
+</xd:acceleratorMap>
