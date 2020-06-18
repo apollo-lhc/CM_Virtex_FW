@@ -57,7 +57,7 @@ architecture structure of top is
   signal led_red_local   : slv_8_t;
   signal led_green_local : slv_8_t;
 
-  constant localAXISlaves    : integer := 4;
+  constant localAXISlaves    : integer := 5;
   signal local_AXI_ReadMOSI  :  AXIReadMOSI_array_t(0 to localAXISlaves-1) := (others => DefaultAXIReadMOSI);
   signal local_AXI_ReadMISO  :  AXIReadMISO_array_t(0 to localAXISlaves-1) := (others => DefaultAXIReadMISO);
   signal local_AXI_WriteMOSI : AXIWriteMOSI_array_t(0 to localAXISlaves-1) := (others => DefaultAXIWriteMOSI);
@@ -216,6 +216,27 @@ begin  -- architecture structure
       VIRTEX_TCDS_wstrb                     => local_AXI_WriteMOSI(3).data_write_strobe,
       VIRTEX_TCDS_wvalid                    => local_AXI_WriteMOSI(3).data_valid,
 
+      V_SLINK_araddr                    => local_AXI_ReadMOSI(4).address,
+      V_SLINK_arprot                    => local_AXI_ReadMOSI(4).protection_type,
+      V_SLINK_arready                   => local_AXI_ReadMISO(4).ready_for_address,
+      V_SLINK_arvalid                   => local_AXI_ReadMOSI(4).address_valid,
+      V_SLINK_awaddr                    => local_AXI_WriteMOSI(4).address,
+      V_SLINK_awprot                    => local_AXI_WriteMOSI(4).protection_type,
+      V_SLINK_awready                   => local_AXI_WriteMISO(4).ready_for_address,
+      V_SLINK_awvalid                   => local_AXI_WriteMOSI(4).address_valid,
+      V_SLINK_bready                    => local_AXI_WriteMOSI(4).ready_for_response,
+      V_SLINK_bresp                     => local_AXI_WriteMISO(4).response,
+      V_SLINK_bvalid                    => local_AXI_WriteMISO(4).response_valid,
+      V_SLINK_rdata                     => local_AXI_ReadMISO(4).data,
+      V_SLINK_rready                    => local_AXI_ReadMOSI(4).ready_for_data,
+      V_SLINK_rresp                     => local_AXI_ReadMISO(4).response,
+      V_SLINK_rvalid                    => local_AXI_ReadMISO(4).data_valid,
+      V_SLINK_wdata                     => local_AXI_WriteMOSI(4).data,
+      V_SLINK_wready                    => local_AXI_WriteMISO(4).ready_for_data,
+      V_SLINK_wstrb                     => local_AXI_WriteMOSI(4).data_write_strobe,
+      V_SLINK_wvalid                    => local_AXI_WriteMOSI(4).data_valid,
+
+      
       IPBUS_VIRTEX_araddr                   => ext_AXI_ReadMOSI.address,              
       IPBUS_VIRTEX_arburst                  => ext_AXI_ReadMOSI.burst_type,
       IPBUS_VIRTEX_arcache                  => ext_AXI_ReadMOSI.cache_type,
@@ -391,4 +412,14 @@ begin  -- architecture structure
       diB   => BRAM_WR_DATA,
       doA   => bram_rddata_a,
       doB   => open);
+
+  SLink_1: entity work.SLink
+    port map (
+      clk_axi     => AXI_CLK,
+      reset_axi_n => AXI_RST_N,
+      readMOSI    => local_AXI_readMOSI(4),
+      readMISO    => local_AXI_readMISO(4),
+      writeMOSI   => local_AXI_writeMOSI(4),
+      writeMISO   => local_AXI_writeMISO(4));
+
 end architecture structure;

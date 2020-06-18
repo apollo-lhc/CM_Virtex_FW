@@ -29,6 +29,9 @@ set vhdl_files "\
      src/TCDS/VIRTEX_TCDS_PKG.vhd \
      src/misc/axi_bram_controller.vhd \
      src/misc/axi_bram_ctrl_v4_1_rfs.vhd \
+     src/slink/SLink.vhd \
+     src/slink/V_SLINK_map.vhd \
+     src/slink/V_SLINK_PKG.vhd \
      "
 set xdc_files "\
     src/top_pins.xdc \
