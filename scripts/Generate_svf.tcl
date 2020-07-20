@@ -31,3 +31,4 @@ create_hw_device -part xcvu7p-flvb2104-1-e
 
 program_hw_devices -force -svf_file {../bit/top.svf} ${DEVICE}
 
+write_cfgmem  -format mcs -size 128 -interface QSPIx4-dual_stacked -file "../bit/top.mcs"
