@@ -57,7 +57,7 @@ createReleaseData='\
 	"tag_name": "v'+releaseVersion+'",\
 	"target_commitish": "'+branch+'",\
 	"name": "v'+releaseVersion+'",\
-	"body": "v '+releaseVersion+' release of CM Virtex FW",\
+	"body": "v '+releaseVersion+' release of '+repo+'",\
 	"draft": false,\
 	"prerelease": false\
 	}'
