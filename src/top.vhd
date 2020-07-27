@@ -386,8 +386,9 @@ begin  -- architecture structure
       bram_clk_a    => bram_clk_a,
       bram_en_a     => bram_en_a,
       bram_we_a     => bram_we_a,
-      bram_addr_a(31 downto 10) => open,
-      bram_addr_a( 9 downto  0) => bram_addr_a,
+      bram_addr_a(31 downto 12) => open,
+      bram_addr_a(11 downto  2) => bram_addr_a,
+      bram_addr_a( 1 downto  0) => open,
       bram_wrdata_a => bram_wrdata_a,
       bram_rddata_a => bram_rddata_a);
 
