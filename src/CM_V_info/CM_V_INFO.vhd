@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-use work.FW_INFO_Ctrl.all;
+use work.CM_V_INFO_Ctrl.all;
 use work.AXIRegPkg.all;
 
 use work.types.all;
@@ -15,7 +15,7 @@ Library UNISIM;
 use UNISIM.vcomponents.all;
 
 
-entity FW_info is
+entity CM_V_info is
   
   port (
     clk_axi         : in  std_logic;
@@ -25,10 +25,10 @@ entity FW_info is
     writeMOSI       : in  AXIWriteMOSI;
     writeMISO       : out AXIWriteMISO := DefaultAXIWriteMISO
     );
-end entity FW_info;
+end entity CM_V_info;
 
-architecture behavioral of FW_info is
-  signal Mon              :  FW_INFO_Mon_t;
+architecture behavioral of CM_V_info is
+  signal Mon              :  CM_V_INFO_Mon_t;
 
 begin  -- architecture behavioral
 
@@ -36,7 +36,7 @@ begin  -- architecture behavioral
   -- AXI 
   -------------------------------------------------------------------------------
   -------------------------------------------------------------------------------
-  FW_INFO_interface_1: entity work.FW_INFO_interface
+  CM_V_INFO_interface_1: entity work.CM_V_INFO_interface
     port map (
       clk_axi         => clk_axi,
       reset_axi_n     => reset_axi_n,
