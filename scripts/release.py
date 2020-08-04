@@ -125,7 +125,7 @@ def main():
         for slave in yaml.load(open(dtsiSlavesFile))['SLAVE']:
             dtsiFile=GetFilesToSend(args.dtsiPath+"hw/",slave['NAME']+".")    
             if len(dtsiFile) != 1:
-                raise Exception('Too few or too many dtsi file matches!\nret:{0}\n'.format(dtsiFile))            
+                raise Exception('Too few or too many dtsi file matches with ({0})!\nret:{1}\n'.format(slave['NAME'],dtsiFile))            
             for file in dtsiFile:
                 if len(dtsiFile[file]) > printPadding:                    
                     printPadding = len(dtsiFile[file])+1
