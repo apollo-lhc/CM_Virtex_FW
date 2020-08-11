@@ -21,9 +21,9 @@ set vhdl_files "\
      src/V_IO/V_IO_map.vhd \
      src/misc/RGB_PWM.vhd \
      src/misc/LED_PWM.vhd \
-     src/CM_V_info/FW_info.vhd \                                                                                                                                        
-     src/CM_V_info/FW_INFO_PKG.vhd \                                                                                                                                      
-     src/CM_V_info/FW_INFO_map.vhd \          
+     src/CM_V_info/CM_V_INFO.vhd \                                                                                                                                        
+     src/CM_V_info/CM_V_INFO_PKG.vhd \                                                                                                                                      
+     src/CM_V_info/CM_V_INFO_map.vhd \          
      src/TCDS/TCDS.vhd \
      src/TCDS/VIRTEX_TCDS_map.vhd \
      src/TCDS/VIRTEX_TCDS_PKG.vhd \
