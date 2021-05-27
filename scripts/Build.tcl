@@ -9,9 +9,9 @@ source ../scripts/settings.tcl
 
 update_compile_order -fileset sources_1
 #puts "setting ip_repo_paths \n"
-#set_property ip_repo_paths [list ../src/PRMEMC ../cores/] [current_project]
+set_property ip_repo_paths [list ../src/PRMEMC ../cores/] [current_project]
 #puts "updatign ip catalog \n"
-#update_ip_catalog
+update_ip_catalog
 
 set ip_to_regenerate [get_ips]
 for {set j 0} {$j < [llength $ip_to_regenerate ] } {incr j} {
@@ -29,17 +29,21 @@ if {[string length [get_files $bd_name.bd]]} {
     generate_target all [get_files "[get_bd_designs].bd"]
 }
 set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sources_1
-#set_property ip_repo_paths [list ../src/PRMEMC ../cores/] [current_project]
-#update_ip_catalog
+#update_compile_order -fileset sources_1
+# set_property ip_repo_paths [list ../src/PRMEMC ../cores/] [current_project]
+# update_ip_catalog
 #update_compile_order -fileset sources_1
 # create_ip -name MatchCalculatorTop -vendor xilinx.com -library hls -version 1.0 -module_name MC_L3PHIC
 # create_ip -name MatchEngineTopL3 -vendor xilinx.com -library hls -version 1.0 -module_name MatchEngineTopL3_0
 # create_ip -name ProjectionRouterTop -vendor xilinx.com -library hls -version 1.0 -module_name PR_L3PHIC
-#report_ip_status
+# create_ip -name ProjectionRouterTop5 -vendor xilinx.com -library hls -version 1.0 -module_name PR_L3PHIA
+# create_ip -name ProjectionRouterTop7 -vendor xilinx.com -library hls -version 1.0 -module_name PR_L3PHID
+# create_ip -name ProjectionRouterTop9 -vendor xilinx.com -library hls -version 1.0 -module_name PR_L3PHIB
+
+report_ip_status
 #synth design
 synth_design -top $top -part $FPGA_part -flatten rebuilt
-#report_ip_status 
+report_ip_status 
 #Rui
 write_checkpoint -force $outputDir/post_synth
 #report_timing_summary -file $outputDir/post_synth_timing_summary.rpt
