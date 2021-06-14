@@ -52,7 +52,6 @@ set xci_files "\
               cores/MC_L3PHIC/MC_L3PHIC.xci \
               cores/in_system_ibert_0/in_system_ibert_0.xci \
               cores/TCDS_TxRx/TCDS_TxRx.xci  \
-              cores/AXI_DRP/AXI_DRP.xci \
     	      "
 set data_files "\
                emData/TrackletProjections_TPROJ_L1L2B_L3PHIA_04MOD.dat \
