@@ -19,7 +19,8 @@ for {set j 0} {$j < [llength $ip_to_regenerate ] } {incr j} {
     set ip_xci ../cores/$ip_name/$ip_name.xci
     if {[string length [get_files -q $ip_xci]]} {
 	puts "Building $ip_name \n\n"
-	generate_target {synthesis} [get_files $ip_xci]
+#	generate_target {synthesis} [get_files $ip_xci]
+	generate_target {all} [get_files $ip_xci]
 	synth_ip [lindex $ip_to_regenerate $j]
     }
 }
@@ -29,10 +30,10 @@ if {[string length [get_files $bd_name.bd]]} {
     generate_target all [get_files "[get_bd_designs].bd"]
 }
 set_property source_mgmt_mode All [current_project]
-#update_compile_order -fileset sources_1
+# update_compile_order -fileset sources_1
 # set_property ip_repo_paths [list ../src/PRMEMC ../cores/] [current_project]
 # update_ip_catalog
-#update_compile_order -fileset sources_1
+# update_compile_order -fileset sources_1
 # create_ip -name MatchCalculatorTop -vendor xilinx.com -library hls -version 1.0 -module_name MC_L3PHIC
 # create_ip -name MatchEngineTopL3 -vendor xilinx.com -library hls -version 1.0 -module_name MatchEngineTopL3_0
 # create_ip -name ProjectionRouterTop -vendor xilinx.com -library hls -version 1.0 -module_name PR_L3PHIC
