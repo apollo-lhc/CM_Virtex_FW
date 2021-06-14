@@ -217,9 +217,9 @@ begin  -- architecture TCDS
   
   TCDS_TxRx_2: entity work.TCDS_TxRx
     port map (
-      gtwiz_userclk_tx_active_in            => "1",
+      gtwiz_userclk_tx_active_in            => std_logic_vector' ( (others => '1')),--"1",
 --      gtwiz_userclk_tx_active_out           => gtwiz_userclk_tx_active_out,
-      gtwiz_userclk_rx_active_in            => "1",
+      gtwiz_userclk_rx_active_in            => std_logic_vector' ( (others => '1')),--"1",
       gtwiz_reset_clk_freerun_in(0)         => clk_axi,
       gtwiz_reset_all_in(0)                 => Ctrl.RESETS.RESET_ALL,
       gtwiz_reset_tx_pll_and_datapath_in(0) => Ctrl.RESETS.TX_PLL_DATAPATH,
@@ -252,7 +252,7 @@ begin  -- architecture TCDS
       gtyrxp_in(0)                       => rx_p,
       loopback_in                        => CTRL.LOOPBACK,
       rxlpmen_in(0)                      => rxlpmen_int,--"X",
-      rxgearboxslip_in                   => "0",
+      rxgearboxslip_in                   => std_logic_vector' ( (others => '0')),--"0",
       rxprbscntreset_in(0)               => Ctrl.RX.PRBS_RESET,
       rxprbssel_in                       => Ctrl.RX.PRBS_SEL,
       rxrate_in                          => rxrate_int,--"000",
